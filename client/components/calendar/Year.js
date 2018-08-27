@@ -35,7 +35,7 @@ class Year extends Component {
           readOnly={!this.state.editable}           
           value={this.props.currentYear}
           onChange={this.setYear.bind(this)}
-          onClick={this.makeEditable}
+          onClick={this.makeEditable.bind(this)}
           />
       </div>
     );

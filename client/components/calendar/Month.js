@@ -44,7 +44,7 @@ class Month extends Component {
 
     return (
       <div className="month">
-        <button type="button" className="reset" onClick={this.showPopup}>{this.props.currentMonth}</button>
+        <button type="button" className="reset" onClick={this.showPopup.bind(this)}>{this.props.currentMonth}</button>
           { (this.state.shownPopup) &&
             <ul className="month-popup">
               {liMonths}

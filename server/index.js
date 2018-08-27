@@ -12,6 +12,20 @@ app.use(bodyParser.json())
 app.use('/public', express.static(path.resolve(__dirname, '../public')));
 
 
+
+
+// app.get('/calendar/:id', function(req, res) {
+//   const requestID = req.params.id;
+//   let item = list.filter(item => {
+//     return item.id == requestID
+//   })
+//   res.json(item[0]);
+// });
+
+
+
+
+
 // app.get('/api/todos', function(req, res) {
 //   // read data
 //   fs.readFile('public/todo.json', 'utf8', function (err, data) {

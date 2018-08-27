@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Month from './Month';
 import Year from './Year';
@@ -8,13 +9,10 @@ class Calendar extends Component {
 
   constructor(props){
     super(props);
-    this.width = props.width || '400px';
-    this.style = props.style || {};
     this.state = {
       dateContext: moment(),
       today: moment()
     }
-    this.style.width = this.width;
   }
 
   year() {
@@ -76,10 +74,16 @@ class Calendar extends Component {
       let className = ( 
         j == this.currentDay() && 
         this.month() == moment(this.state.today).format('MMMM') &&
-        this.year() == moment(this.state.today).format('Y') ? 'slot day current-day' : 'slot day')
+        this.year() == moment(this.state.today).format('Y') ? 'slot day current-day' : 'slot day');
+
+      let dayString = (j<10?'0'+j:j)+'-'+this.state.dateContext.format('MM')+'-'+ this.year();
+
       daysInMonth.push(
-        <td key={j} className={className}>
-          <span>{j}</span>
+        <td key={dayString} className={className}>
+          <span>
+            {/* <Link to={'/calendar/'+dayString} onClick={this.getId.bind(this, dayString)}>{j}</Link> */}
+            <Link to={'/calendar/'+dayString} >{j}</Link>
+          </span>
         </td>
       )
     }
@@ -118,7 +122,7 @@ class Calendar extends Component {
 
 
     return (
-      <div className="calendar-container" style={this.style}>
+      <div className="calendar-container">
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
